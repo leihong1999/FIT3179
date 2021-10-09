@@ -1,0 +1,150 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 400,
+  "height": 300,
+  "description": "A scatterplot showing horsepower and miles per gallons that opens a Google search for the car that you click on.",
+  "data": {
+    "url": "https://raw.githubusercontent.com/leihong1999/FIT3179/main/EntriesGender.csv"
+  },
+  "params": [
+    {
+      "name": "continent_highlight",
+      "select": {"type": "point", "fields": ["Discipline"]},
+      "bind": "legend"
+    },
+    {
+      "name": "Continent_selection",
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "3x3 Basketball",
+          "Archery",
+          "Artistic Gymnastics",
+          "Artistic Swimming",
+          "Athletics",
+          "Badminton",
+          "Baseball/Softball",
+          "Basketball",
+          "Beach Volleyball",
+          "Boxing",
+          "Canoe Slalom",
+          "Canoe Sprint",
+          "Cycling BMX Freestyle",
+          "Cycling BMX Racing",
+          "Cycling Mountain Bike",
+          "Cycling Road",
+          "Cycling Track",
+          "Diving",
+          "Equestrian",
+          "Fencing",
+          "Football",
+          "Golf",
+          "Handball",
+          "Hockey",
+          "Judo",
+          "Karate",
+          "Marathon Swimming",
+          "Modern Pentathlon",
+          "Rhythmic Gymnastics",
+          "Rowing",
+          "Rugby Sevens",
+          "Sailing",
+          "Shooting",
+          "Skateboarding",
+          "Sport Climbing",
+          "Surfing",
+          "Swimming",
+          "Table Tennis",
+          "Taekwondo",
+          "Tennis",
+          "Trampoline Gymnastics",
+          "Triathlon",
+          "Volleyball",
+          "Water Polo",
+          "Weightlifting",
+          "Wrestling"
+        ],
+        "labels": [
+          "Show All",
+          "3x3 Basketball",
+          "Archery",
+          "Artistic Gymnastics",
+          "Artistic Swimming",
+          "Athletics",
+          "Badminton",
+          "Baseball/Softball",
+          "Basketball",
+          "Beach Volleyball",
+          "Boxing",
+          "Canoe Slalom",
+          "Canoe Sprint",
+          "Cycling BMX Freestyle",
+          "Cycling BMX Racing",
+          "Cycling Mountain Bike",
+          "Cycling Road",
+          "Cycling Track",
+          "Diving",
+          "Equestrian",
+          "Fencing",
+          "Football",
+          "Golf",
+          "Handball",
+          "Hockey",
+          "Judo",
+          "Karate",
+          "Marathon Swimming",
+          "Modern Pentathlon",
+          "Rhythmic Gymnastics",
+          "Rowing",
+          "Rugby Sevens",
+          "Sailing",
+          "Shooting",
+          "Skateboarding",
+          "Sport Climbing",
+          "Surfing",
+          "Swimming",
+          "Table Tennis",
+          "Taekwondo",
+          "Tennis",
+          "Trampoline Gymnastics",
+          "Triathlon",
+          "Volleyball",
+          "Water Polo",
+          "Weightlifting",
+          "Wrestling"
+        ],
+        "name": "Continent Selection: "
+      }
+    }
+  ],
+  "selection": {
+    "continent_highlight": {
+      "type": "multi",
+      "fields": ["Discipline"],
+      "bind": "legend"
+    }
+  },
+  "transform": [
+    {
+      "filter": "Continent_selection == null || datum.Discipline == Continent_selection"
+    }
+  ],
+  "mark": "circle",
+  "encoding": {
+    "x": {"field": "Male", "type": "quantitative"},
+    "y": {"field": "Female", "type": "quantitative"},
+    "color": {"field": "Discipline", "type": "nominal"},
+    "size": {"field": "Total", "type": "quantitative"},
+    "tooltip": [
+      {"field": "Male", "type": "quantitative"},
+      {"field": "Female", "type": "quantitative"},
+      {"field": "Total", "type": "quantitative"}
+    ],
+    "opacity": {
+      "condition": {"param": "continent_highlight", "value": 0.6},
+      "value": 0.2
+    }
+  },
+  "config": {}
+}
