@@ -6,10 +6,3 @@
   text-align: center;
   min-height: 100vh;
 }
-
-.centered {
-  position: fixed;
-  margin-top: 10%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
