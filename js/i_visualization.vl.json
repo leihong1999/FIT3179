@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "A dashboard with cross-highlighting.",
+  "description": "Number of Male and female athletes in all sports in Tyoto Olympic Games 2020",
   "data": {"url": "https://raw.githubusercontent.com/leihong1999/FIT3179/main/EntriesGender.csv"},
   "vconcat": [
     {
