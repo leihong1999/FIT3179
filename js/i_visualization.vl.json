@@ -114,13 +114,6 @@
       }
     }
   ],
-  "selection": {
-    "continent_highlight": {
-      "type": "multi",
-      "fields": ["Discipline"],
-      "bind": "legend"
-    }
-  },
   "transform": [
     {
       "filter": "Continent_selection == null || datum.Discipline == Continent_selection"
