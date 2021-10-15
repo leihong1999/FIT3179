@@ -9,11 +9,6 @@
   },
   "params": [
     {
-      "name": "continent_highlight",
-      "select": {"type": "point", "fields": ["Discipline"]},
-      "bind": "legend"
-    },
-    {
       "name": "Continent_selection",
       "bind": {
         "input": "select",
@@ -141,11 +136,7 @@
       {"field": "Male", "type": "quantitative"},
       {"field": "Female", "type": "quantitative"},
       {"field": "Total", "type": "quantitative"}
-    ],
-    "opacity": {
-      "condition": {"param": "continent_highlight", "value": 0.6},
-      "value": 0.2
-    }
+    ]
   },
   "config": {}
 }
