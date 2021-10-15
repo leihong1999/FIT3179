@@ -1,151 +1,60 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 500,
-  "height": 500,
-  "title": "Number of male and female athletes in all sports at the Tokyo Olympic Games",
-  "description": "A scatterplot showing horsepower and miles per gallons that opens a Google search for the car that you click on.",
-  "data": {
-    "url": "https://raw.githubusercontent.com/leihong1999/FIT3179/main/EntriesGender.csv"
-  },
-  "params": [
+  "description": "A dashboard with cross-highlighting.",
+  "data": {"url": "https://raw.githubusercontent.com/leihong1999/FIT3179/main/EntriesGender.csv"},
+  "vconcat": [
     {
-      "name": "continent_highlight",
-      "select": {"type": "point", "fields": ["Discipline"]},
-      "bind": "legend"
-    },
-    {
-      "name": "Continent_selection",
-      "bind": {
-        "input": "select",
-        "options": [
-          null,
-          "3x3 Basketball",
-          "Archery",
-          "Artistic Gymnastics",
-          "Artistic Swimming",
-          "Athletics",
-          "Badminton",
-          "Baseball/Softball",
-          "Basketball",
-          "Beach Volleyball",
-          "Boxing",
-          "Canoe Slalom",
-          "Canoe Sprint",
-          "Cycling BMX Freestyle",
-          "Cycling BMX Racing",
-          "Cycling Mountain Bike",
-          "Cycling Road",
-          "Cycling Track",
-          "Diving",
-          "Equestrian",
-          "Fencing",
-          "Football",
-          "Golf",
-          "Handball",
-          "Hockey",
-          "Judo",
-          "Karate",
-          "Marathon Swimming",
-          "Modern Pentathlon",
-          "Rhythmic Gymnastics",
-          "Rowing",
-          "Rugby Sevens",
-          "Sailing",
-          "Shooting",
-          "Skateboarding",
-          "Sport Climbing",
-          "Surfing",
-          "Swimming",
-          "Table Tennis",
-          "Taekwondo",
-          "Tennis",
-          "Trampoline Gymnastics",
-          "Triathlon",
-          "Volleyball",
-          "Water Polo",
-          "Weightlifting",
-          "Wrestling"
-        ],
-        "labels": [
-          "Show All",
-          "3x3 Basketball",
-          "Archery",
-          "Artistic Gymnastics",
-          "Artistic Swimming",
-          "Athletics",
-          "Badminton",
-          "Baseball/Softball",
-          "Basketball",
-          "Beach Volleyball",
-          "Boxing",
-          "Canoe Slalom",
-          "Canoe Sprint",
-          "Cycling BMX Freestyle",
-          "Cycling BMX Racing",
-          "Cycling Mountain Bike",
-          "Cycling Road",
-          "Cycling Track",
-          "Diving",
-          "Equestrian",
-          "Fencing",
-          "Football",
-          "Golf",
-          "Handball",
-          "Hockey",
-          "Judo",
-          "Karate",
-          "Marathon Swimming",
-          "Modern Pentathlon",
-          "Rhythmic Gymnastics",
-          "Rowing",
-          "Rugby Sevens",
-          "Sailing",
-          "Shooting",
-          "Skateboarding",
-          "Sport Climbing",
-          "Surfing",
-          "Swimming",
-          "Table Tennis",
-          "Taekwondo",
-          "Tennis",
-          "Trampoline Gymnastics",
-          "Triathlon",
-          "Volleyball",
-          "Water Polo",
-          "Weightlifting",
-          "Wrestling"
-        ],
-        "name": "Sport Selection: "
+      "width": 600,
+      "layer": [ 
+        {
+        "transform": [{
+          "filter": {"param": "pts"}
+        }],
+        "mark": "circle",
+        "encoding": {
+          "x": {
+            "field": "Male",
+            "type": "quantitative"
+          },
+          "y": {
+            "field": "Female",
+            "type": "quantitative"
+          },
+          "size": {"field": "Total", "type": "quantitative"},
+          "color": {
+            "field": "Discipline",
+            "type":"nominal",
+            "legend":false
+            }      
+        }
+      }]
+    }, {
+      "width": 600,
+      "height": 100,
+      "mark": "bar",
+      "params": [{
+        "name": "pts",
+        "select": {"type": "point", "encodings": ["x"]}
+      }],
+      "encoding": {
+        "x": {"field": "Discipline"},
+        "y": {"field": "Total", "type": "quantitative"},
+        "color": {
+          "condition": {
+            "param": "pts",
+            "field": "Discipline",
+            "type":"nominal",
+            "legend":false
+          },
+          "value": "grey"
+        }
       }
     }
   ],
-  "selection": {
-    "continent_highlight": {
-      "type": "multi",
-      "fields": ["Discipline"],
-      "bind": "legend"
+  "resolve": {
+    "legend": {
+      "color": "independent",
+      "size": "independent"
     }
-  },
-  "transform": [
-    {
-      "filter": "Continent_selection == null || datum.Discipline == Continent_selection"
-    }
-  ],
-  "mark": "circle",
-  "encoding": {
-    "x": {"field": "Male", "type": "quantitative"},
-    "y": {"field": "Female", "type": "quantitative"},
-    "color": {"field": "Discipline", "type": "nominal"},
-    "size": {"field": "Total", "type": "quantitative"},
-    "tooltip": [
-      {"field": "Male", "type": "quantitative"},
-      {"field": "Female", "type": "quantitative"},
-      {"field": "Total", "type": "quantitative"}
-    ],
-    "opacity": {
-      "condition": {"param": "continent_highlight", "value": 0.6},
-      "value": 0.2
-    }
-  },
-  "config": {}
+  }
 }
