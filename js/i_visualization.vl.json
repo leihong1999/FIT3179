@@ -5,7 +5,7 @@
   "title": "Number of Male and female athletes in all sports in Tyoto Olympic Games 2020",
   "vconcat": [
     {
-      "width": 600,
+      "width": 700,
       "layer": [ 
         {
         "transform": [{
@@ -35,7 +35,7 @@
         }
       }]
     }, {
-      "width": 600,
+      "width": 700,
       "height": 100,
       "mark": "bar",
       "params": [{
