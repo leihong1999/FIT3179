@@ -25,7 +25,12 @@
             "field": "Discipline",
             "type":"nominal",
             "legend":false
-            }      
+            },
+          "tooltip": [
+            {"field": "Male", "type": "quantitative"},
+            {"field": "Female", "type": "quantitative"},
+            {"field": "Total", "type": "quantitative"}
+          ]
         }
       }]
     }, {
