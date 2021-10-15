@@ -1,13 +1,18 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 300,
-  "height": 225,
+  "width": 500,
+  "height": 500,
   "title": "Number of male and female athletes in all sports at the Tokyo Olympic Games",
   "description": "A scatterplot showing horsepower and miles per gallons that opens a Google search for the car that you click on.",
   "data": {
     "url": "https://raw.githubusercontent.com/leihong1999/FIT3179/main/EntriesGender.csv"
   },
   "params": [
+    {
+      "name": "continent_highlight",
+      "select": {"type": "point", "fields": ["Discipline"]},
+      "bind": "legend"
+    },
     {
       "name": "Continent_selection",
       "bind": {
@@ -114,6 +119,13 @@
       }
     }
   ],
+  "selection": {
+    "continent_highlight": {
+      "type": "multi",
+      "fields": ["Discipline"],
+      "bind": "legend"
+    }
+  },
   "transform": [
     {
       "filter": "Continent_selection == null || datum.Discipline == Continent_selection"
@@ -129,7 +141,11 @@
       {"field": "Male", "type": "quantitative"},
       {"field": "Female", "type": "quantitative"},
       {"field": "Total", "type": "quantitative"}
-    ]
+    ],
+    "opacity": {
+      "condition": {"param": "continent_highlight", "value": 0.6},
+      "value": 0.2
+    }
   },
   "config": {}
 }
