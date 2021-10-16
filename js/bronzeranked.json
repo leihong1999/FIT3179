@@ -24,8 +24,7 @@
     "y": {
         "field": "Team/NOC",
         "type": "nominal",
-        "sort": {"field": "Bronze", "op": "average", "order":"descending"},
-        "axis":false
+        "sort": {"field": "Bronze", "op": "average", "order":"descending"}
     },
     "color": {
       "field": "Team/NOC",
