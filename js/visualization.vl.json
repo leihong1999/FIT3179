@@ -36,9 +36,7 @@
           "field": "Medals Total",
           "type": "quantitative",
           "scale": {
-            "type": "threshold",
-            "domain": [20, 50, 80],
-            "range": ["#fdbe85", "#fd8d3c", "#e6550d", "#a63603"]
+            "scheme": "reds"
           }
         },
         "tooltip": [
