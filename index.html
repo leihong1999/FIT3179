@@ -18,7 +18,7 @@
   <div id="visualization"></div>
   <div>
     <a id="visualization3"></a>
-    <a id="visualization3"></a>
+    <a id="visualization4"></a>
   <div>
   <div id="visualization2"></div>
 </div>
@@ -41,6 +41,13 @@
 <script type="text/javascript">
   var spec2 = "js/goldranked.json";
   vegaEmbed('#visualization3', spec2).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+</script>
+#silver ranked
+<script type="text/javascript">
+  var spec2 = "js/silverranked.json";
+  vegaEmbed('#visualization4', spec2).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
 </script>
