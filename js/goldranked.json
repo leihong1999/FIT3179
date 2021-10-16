@@ -30,6 +30,9 @@
       "field": "Team/NOC",
       "type":"nominal",
       "legend":false
-    }
+    },
+    "tooltip": [
+      {"field": "Gold", "type": "quantitative"}
+   ]
   }
 }
