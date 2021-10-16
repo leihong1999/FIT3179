@@ -1,0 +1,38 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Top 5 In Gold Medals",
+  "data": {
+    "url":"https://raw.githubusercontent.com/leihong1999/FIT3179/main/Medals.csv"
+  },
+  "transform": [
+    {
+      "window": [{
+        "op": "rank",
+        "as": "rank"
+      }],
+      "sort": [{ "toNumber":{"field": "Silver"}, "order": "descending" }]
+    }, {
+      "filter": "datum.rank <= 5"
+    }
+  ],
+  "mark": "bar",
+  "encoding": {
+    "x": {
+        "field": "Silver",
+        "type": "quantitative"
+    },
+    "y": {
+        "field": "Team/NOC",
+        "type": "nominal",
+        "sort": {"field": "Silver", "op": "average", "order":"descending"}
+    },
+    "color": {
+      "field": "Team/NOC",
+      "type":"nominal",
+      "legend":false
+    },
+    "tooltip": [
+      {"field": "Silver", "type": "quantitative"}
+   ]
+  }
+}
